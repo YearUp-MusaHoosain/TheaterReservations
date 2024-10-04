@@ -11,11 +11,22 @@ public class TheaterReservations {
 
     public static void main(String[] args) {
 
-        // figure out these
+        // Input
         String fullName = promptForString("Please enter your name: ");
         String dateOfTheShow = promptForDate("What date will you be coming (MM/dd/yyyy): ");
         int numberOfTickets = promptForInt("How many tickets would you like? ");
 
+
+        //OUTPUT
+        String confirmationMessage = reservationInfo(fullName, numberOfTickets, dateOfTheShow);
+        System.out.println(confirmationMessage);
+
+        //Display confirmation message
+        //# ticket(s) reserved for (date) under (LastName, FirstName)
+
+    }
+
+    public static String reservationInfo(String fullName, int numberOfTickets, String dateOfTheShow) {
         String[] nameParts = fullName.split(Pattern.quote(" "));
 
         String firstName = nameParts[0];
@@ -28,17 +39,7 @@ public class TheaterReservations {
                 """
                 %d tickets reserved for %s under %s, %s
                 """ .formatted(numberOfTickets, dateOfTheShow, lastName, firstName);
-
-        //Output
-        System.out.println(confirmationMessage);
-
-        //Display confirmation message
-        //# ticket(s) reserved for (date) under (LastName, FirstName)
-
-        System.out.println(fullName);
-        System.out.println(dateOfTheShow);
-        System.out.println(numberOfTickets);
-
+        return confirmationMessage;
     }
 
     public static String promptForString(String prompt){
